@@ -3,7 +3,8 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to @book, notice: 'Book was succesfully created'
+      flash[:success] = "Book was successfully create."
+      redirect_to @book
     else
       @books = Book.all
       render :index
